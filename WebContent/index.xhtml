@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Agence Sur la route</title>
+</h:head>
+<h:body bgcolor="white">
+
+
+	<ui:decorate template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			
+			<h:form>
+			<h3>Sélectionnez l'action à effectuer : </h3>
+			<br />
+				<h:panelGrid columns="2" align="center">
+					<h2><a type="button" href="gestionAgence.xhtml">Gestion Agences</a></h2>
+					<br />
+					<h2><a type="button" href="gestionVoiture.xhtml">Gestion Voitures</a>	</h2>
+				</h:panelGrid>
+			</h:form>
+			
+		</ui:define>
+	</ui:decorate>
+	
+
+</h:body>
+</html>

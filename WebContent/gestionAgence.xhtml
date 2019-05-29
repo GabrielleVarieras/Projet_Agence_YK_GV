@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Agence Sur la route</title>
+</h:head>
+<h:body bgcolor="white">
+
+
+    <ui:decorate template="/WEB-INF/templates/BasicTemplate.xhtml">
+        <ui:define name="content">
+            <h:form>
+        
+            
+                <p:panelGrid columns="2">
+                
+                    <f:facet name="header">
+                          Ajout Agence
+                     </f:facet>
+                   <h:outputLabel for="nom" value="Nom" />
+                   <p:inputText id="nom" value="#{managerAgence.agence.nom}" />
+                   <h:outputLabel for="adresse" value="Adresse" />
+                   <p:inputText id="adresse" value="#{managerAgence.agence.adresse}" />
+                   <h:outputLabel for="nbre_employe" value="Employes" />
+                   <p:inputText id="nbre_employe" value="#{managerAgence.agence.nbre_employe}" />
+               
+                   <p:commandButton action="#{managerAgence.save}" update="cars1"
+                       value="Save" icon="ui-icon-check" style="margin:0" />
+                   <h:messages />
+               </p:panelGrid>
+                
+                
+				<style type="text/css">
+				    .ui-row-editor .ui-row-editor-pencil {
+				        margin-left:8px;
+				    }
+				</style>
+ 
+
+
+
+ 
+    <p:dataTable id="cars1" var="car" value="#{managerAgence.listeAgence}" editable="true" style="margin-bottom:20px">
+        <f:facet name="header">
+            Liste de Agences
+        </f:facet>
+ 
+        <p:ajax event="rowEdit" listener="#{managerAgence.onRowEdit}"  />
+        <p:ajax event="rowEditCancel" listener="#{managerAgence.onRowCancel}" />
+ 
+        <p:column headerText="nom">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.nom}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.nom}" style="width:100%"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="adresse">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.adresse}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.adresse}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="nbre_employe">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.nbre_employe}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.nbre_employe}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column style="width:35px">
+            <p:rowEditor />
+        </p:column>
+        
+    </p:dataTable>
+    
+    </h:form>
+               
+        </ui:define>
+    </ui:decorate>
+    
+
+</h:body>
+</html>

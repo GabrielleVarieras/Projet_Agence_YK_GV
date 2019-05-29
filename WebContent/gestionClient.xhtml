@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Agence Sur la route</title>
+</h:head>
+<h:body bgcolor="white">
+
+
+	<ui:decorate template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+		
+			
+				<p:panelGrid columns="2">
+				
+					<f:facet name="header">  
+               			Ajout Client  
+          			</f:facet>
+        			<h:outputLabel for="nom" value="Nom" />
+        			<p:inputText id="nom" value="#{manager.client.nom}" />
+        			<h:outputLabel for="prenom" value="Prenom" />
+        			<p:inputText id="prenom" value="#{manager.client.prenom}" />
+        			<h:outputLabel for="login" value="Login" />
+        			<p:inputText id="login" value="#{manager.client.login}" />
+        			<h:outputLabel for="password" value="Password" />
+        			<p:inputText id="password" value="#{manager.client.password}" />
+        			<h:outputLabel for="email" value="Email" />
+        			<p:inputText id="email" value="#{manager.client.email}" />
+        			<h:outputLabel for="numero_permis" value="Numero permis" />
+        			<p:inputText id="numero_permis" value="#{manager.client.numero_permis}" />
+        			<h:outputLabel for="telephone" value="téléphone" />
+        			<p:inputText id="telephone" value="#{manager.client.telephone}" />
+        			<h:outputLabel for="annee_permis" value="année de permis" />
+        			<p:inputText id="annee_permis" value="#{manager.client.annee_permis}" />
+        		
+        			<p:commandButton action="#{manager.save}" update="mydata"
+            			value="Save" icon="ui-icon-check" style="margin:0" />
+        			<h:messages />
+    			</p:panelGrid>
+				
+				
+				<p:dataTable value="#{manager.findClients}" var="item" id="mydata"
+        			selectionMode="single" selection="#{manager.selectedClient}"
+        			rowKey="#{item.nom}">
+        			<p:column>
+            			<f:facet name="header">Nom</f:facet>
+            			<h:outputText value="#{item.nom}" />
+        			</p:column>
+        			<p:column>
+            			<f:facet name="header">Prenom</f:facet>
+            			<h:outputText value="#{item.prenom}" />
+        			</p:column>
+        			<p:column>
+            			<f:facet name="header">Email</f:facet>
+            			<h:outputText value="#{item.email}" />
+        			</p:column>
+    			</p:dataTable>
+				
+			</h:form>
+		</ui:define>
+	</ui:decorate>
+	
+
+</h:body>
+</html>

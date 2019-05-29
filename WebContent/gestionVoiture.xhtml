@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Agence Sur la route</title>
+</h:head>
+<h:body bgcolor="white">
+
+
+	<ui:decorate template="/WEB-INF/templates/BasicTemplate.xhtml">
+		<ui:define name="content">
+			<h:form>
+		
+			
+				<p:panelGrid columns="2">
+				
+					<f:facet name="header">  
+               			Ajout Voiture  
+          			</f:facet>
+        			<h:outputLabel for="marque" value="Marque" />
+        			<p:inputText id="marque" value="#{managerVoiture.voiture.marque}" />
+        			<h:outputLabel for="immatriculation" value="immatriculation" />
+        			<p:inputText id="immatriculation" value="#{managerVoiture.voiture.immatriculation}" />
+        			<h:outputLabel for="categorie_vehicule" value="Categorie vehicule" />
+        			<p:inputText id="categorie_vehicule" value="#{managerVoiture.voiture.categorie_vehicule}" />
+        			<h:outputLabel for="etat_voiture" value="Etat voiture" />
+        			<p:inputText id="etat_voiture" value="#{managerVoiture.voiture.etat_voiture}" />
+        			<h:outputLabel for="nombre_de_place" value="Nombre de place" />
+        			<p:inputText id="nombre_de_place" value="#{managerVoiture.voiture.nombre_de_place}" />
+        			<h:outputLabel for="couleur" value="Couleur" />
+        			<p:inputText id="couleur" value="#{managerVoiture.voiture.couleur}" />
+        			<h:outputLabel for="disponibilite" value="Disponibilite" />
+        			<p:inputText id="disponibilite" value="#{managerVoiture.voiture.disponibilite}" />
+        			<h:outputLabel for="kilometrage" value="Kilometrage" />
+        			<p:inputText id="kilometrage" value="#{managerVoiture.voiture.kilometrage}" />
+        			<h:outputLabel for="prix_location" value="Prix location" />
+        			<p:inputText id="prix_location" value="#{managerVoiture.voiture.prix_location}" />
+        			
+        			<p:commandButton action="#{managerVoiture.save}" update="cars1"  
+            			value="Save" icon="ui-icon-check" style="margin:0" />
+        			<h:messages />
+    			</p:panelGrid>
+				
+				
+				
+				<style type="text/css">
+				    .ui-row-editor .ui-row-editor-pencil {
+				        margin-left:8px;
+				    }
+				</style>
+ 
+ 
+   
+    <p:dataTable id="cars1" var="car" value="#{managerVoiture.listeVoiture}" editable="true" style="margin-bottom:20px">
+        <f:facet name="header">
+            Liste de Voitures des
+        </f:facet>
+ 
+        <p:ajax event="rowEdit" listener="#{managerVoiture.onRowEdit}"   />
+        <p:ajax event="rowEditCancel" listener="#{managerVoiture.onRowCancel}" />
+ 
+        <p:column headerText="marque">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.marque}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.marque}" style="width:100%"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="immatriculation">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.immatriculation}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.immatriculation}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+ 
+        <p:column headerText="Categorie vehicule">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.categorie_vehicule}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.categorie_vehicule}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+        <p:column headerText="Etat voiture">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.etat_voiture}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.etat_voiture}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+        <p:column headerText="Nombre de place">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.nombre_de_place}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.nombre_de_place}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+        <p:column headerText="Couleur">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.couleur}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.couleur}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+        <p:column headerText="Disponibilite">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.disponibilite}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.disponibilite}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+        <p:column headerText="kilometrage">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.kilometrage}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.kilometrage}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+        
+        <p:column headerText="Prix location">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{car.prix_location}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{car.prix_location}" style="width:100%" label="Year"/></f:facet>
+            </p:cellEditor>
+        </p:column>
+
+ 
+        <p:column style="width:35px">
+            <p:rowEditor />
+        </p:column>
+        
+    </p:dataTable>
+    
+ 
+
+
+			</h:form>			
+		</ui:define>
+	</ui:decorate>
+	
+
+</h:body>
+</html>

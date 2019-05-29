@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	    <!-- Database connection settings -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/jpa_hibernate_agence_location?createDatabaseIfNotExist=true</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+		<!-- Pool de connection (interne) -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Supprimer et re-créée le schéma de base de données au démarrage -->
+		<property name="hbm2ddl.auto">create</property>
+
+		<!-- Montrer toutes les réquêtes générées -->
+ 		<property name="show_sql">true</property> 
+<!-- 		<property name="format_sql"> true </property> -->
+
+		<mapping class="projet_agence_location.model.Voiture" />
+		<mapping class="projet_agence_location.model.Agence" />
+		<mapping class="projet_agence_location.model.Ville" />
+		<mapping class="projet_agence_location.model.Personne" />
+			<mapping class="projet_agence_location.model.Client" />
+			<mapping class="projet_agence_location.model.Admin" />
+		<mapping class="projet_agence_location.model.Reservation" />
+			
+	</session-factory>
+</hibernate-configuration>
